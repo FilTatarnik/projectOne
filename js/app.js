@@ -12,7 +12,7 @@ MVP
 7.If playerXscore === 10 or 20, run gameWon function and stop interval timers and tell the player who won that they won
 8.Reset
 *********************************************************************************/
-
+//goal for today. push random numbers into main
 
 console.log('works');
 /*********************************************************************************
@@ -21,42 +21,41 @@ OBJECTS IN GAME; GAME, PLAYER OBJECTS
 const game = {
 	time: null,
 	score: null,
-	mainNum: null,
+	mainNum: [],
+	playeroneNum: [],
+	playertwoNum: [],
+
 	interval: null,
-
-	//main number generated
-		//figure out a way to push the randomly generated number into an empty array
-
-
-
+	player1: null,
+	player2: null, 
+	generatetopNum(){
 	
+		for(let i = 0; i < 1; i ++){
+			this.mainNum.push(Math.floor(Math.random() * 20));
+		}
+	},
 
+	generateplayerNums(){	
+		// let playerNum = [];
+		for(let i = 0; i < 10; i ++){
+			this.playeroneNum.push(Math.floor(Math.random() * 20));
+		
+		}
+
+		for(let i = 0; i < 10; i ++){
+			this.playertwoNum.push(Math.floor(Math.random() * 20));
+		
+		}		
+	},
+
+	gameTimer() {
+
+	},
 };
 
-	const mainNum = [];
-	// generateNum=()=>{
-	// 	//attach interval timer to this so it generates a random number every x seconds
-	// 	//one for main num and one for playerNums
-
-	// 	 return Math.floor(Math.random() * Math.floor(20))
-	// }
-	for(let i = 0; i < 10; i ++){
-		mainNum.push(Math.floor(Math.random() * 20));
-	
-		// return mainNum;
-	}
-
-// const drawCards = (whichPlayer) =>{
-
-// 	for(let i = 0; i < 3; i++) {
-// 		let randCard = Math.floor(Math.random() * deck.length);
-// 		playerOne.cardsDrawn.push(deck[randCard]);
-// 		deck.splice(randCard, 1);
-// 	}
-
-
-
-
+// game.generatetopNum();
+// game.generateplayerNums();
+// console.log(game.generateNum());
 	//generate random numbers 
 	//check hand function that compares the main number generated vs the numbers generated in each players hands
 	//score button
@@ -68,7 +67,7 @@ THIS IS THE MAIN PLAYER CLASS, BLUEPRINT FOR WHEN PLAYERS INPUT THEIR NAME AND M
 // 	constuctor(name) {
 // 		this.name = name,
 // 		this.score = 0,
-// 		this.playerNums = null,
+// 		this.playerNums = [],
 // 	}
 // /*********************************************************************************
 // GAME WON FUNCTION, CHECKS PLAYERS SCORES, IF SCORE IS === X, RUN GAMEWON FUNCTION
@@ -146,7 +145,16 @@ TIMER INTERVALS
 	
 // }
 
-
+/*********************************************************************************
+event listeners
+*********************************************************************************/	
+$('#testbutton').on('click', ()=>{
+	game.generatetopNum();
+	game.generateplayerNums();
+	console.log(game.mainNum);
+	console.log(game.playeroneNum);
+	console.log(game.playertwoNum);
+})
 
 
 
