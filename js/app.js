@@ -16,6 +16,10 @@ const game = {
 
 
 const playerOne = {
+	generateNum(){
+		 return Math.floor(Math.random() * Math.floor(20))
+		}
+
 	//empty array that gets populated with randomly generated number which is the players 'hand'
 	// check hand function
 	//if a number in hand matches the main number generated, allow score button to be clicked
@@ -28,6 +32,8 @@ const playerOne = {
 }
 
 const playerTwo = {
-
+	generateNum(){
+		 return Math.floor(Math.random() * Math.floor(20))
+		}
 
 }
