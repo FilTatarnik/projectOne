@@ -2,16 +2,18 @@ console.log('works');
 
 const game = {
 	//main number generated
-	generateNum() {
+	generateNum(){
 		 return Math.floor(Math.random() * Math.floor(20))
+		}
+	
 
-	}
+};
 	//generate random numbers 
 	//check hand function that compares the main number generated vs the numbers generated in each players hands
 	//score button
 
 
-}
+
 
 const playerOne = {
 	//empty array that gets populated with randomly generated number which is the players 'hand'
@@ -29,5 +31,3 @@ const playerTwo = {
 
 
 }
-
-game.generateNum();
