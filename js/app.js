@@ -34,8 +34,7 @@ const game = {
 	
 	generatemainNum(){
 		/*and take the num and put it in the empty spot up there under score*/
-	
-			this.mainNum.push(Math.floor(Math.random() * 20))
+		this.mainNum.push(Math.floor(Math.random() * 20))
 			
 			/*show once and emptyArray*/
 
@@ -58,13 +57,7 @@ const game = {
 			return true;
 		} else {
 			return false;
-		}	
-							/*playertwo and playerthree check num  are connected to the playeroneNum and even if the number is in the array it'll say false. it's connected to the first set of numbers. idk why*/
-		// }
-
-		// if(this.playeroneNum.includes(this.playertwoNum)){
-		// 	console.log(true);;
-		// } 
+		  }	
 	},
 
 	checkMatchesTwo(){
@@ -72,7 +65,7 @@ const game = {
 			return true;
 		} else {
 			return false;
-	}
+		  }
 	},
 
 	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
@@ -166,15 +159,11 @@ $('#dealbutton').on('click', ()=>{
 	game.start();
 	game.generatemainNum();
 	game.generateplayerNums();
-	// game.checkMatches();
 	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
 	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
-	console.log(game.checkMatchesOne(game.playeroneNum));
 	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
-	console.log(game.checkMatchesTwo(game.playertwoNum));
-	// console.log(game.checkMatches());
 })
-// $('#checkarrays').on('click', ()=>{
-// 	game.checkMatches();
-// 	console.log('works');
-// })
+$('#checkarrays').on('click', ()=>{
+	console.log(game.checkMatchesOne(game.playeroneNum));
+	console.log(game.checkMatchesTwo(game.playertwoNum));
+})
