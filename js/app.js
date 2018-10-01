@@ -52,21 +52,21 @@ const game = {
 		}
 	},
 
-	checkMatchesOne(){
+	checkMatches(player){
 		if(this.playeroneNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
 			return false;
-		  }	
+		}	
 	},
 
-	checkMatchesTwo(){
-		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-			return true;
-		} else {
-			return false;
-		  }
-	},
+	// checkMatchesTwo(){
+	// 	if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	  }
+	// },
 
 	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
 	//while loops
@@ -96,9 +96,8 @@ const game = {
 		//the function needs to loop through all three arrays and check if there are any similar numbers in all three arrays
 
 	// },
-	start() {/*ohh so every time the game 'starts', two players are made with the properties i gave the . the player blueprint i made down there. everyone on of those blueprints are gonna need properties, so think of it like how you would actually build a player in a game, ykno he has a name, in this case he has a score and he has numbers that we're going to randomly generate and give him to see if he has a match with the mainNum */
-
-
+	start() {
+		/*ohh so every time the game 'starts', two players are made with the properties i gave the . the player blueprint i made down there. everyone on of those blueprints are gonna need properties, so think of it like how you would actually build a player in a game, ykno he has a name, in this case he has a score and he has numbers that we're going to randomly generate and give him to see if he has a match with the mainNum */
 		//this should be connected to a button and it instantiates a player
 		const playerOne = new Player('playerOne', 0);
 		const playerTwo = new Player('playerTwo', 0);	
@@ -118,8 +117,13 @@ class Player {
 		this.name = name;
 		this.score = 0;
 		this.nums = [];
-}
+	}
+
 	increaseScore(){
+		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+			score++;
+		}
+
 		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
 	}
 
@@ -127,6 +131,7 @@ class Player {
 		/*playerNums === mainNum generated) score++*/
 		//function that checks the players numbers to see if any of them match the main number generated
 	}
+
 }
 
 
@@ -156,6 +161,9 @@ TIMER INTERVALS
 event listeners
 *********************************************************************************/	
 $('#dealbutton').on('click', ()=>{
+	//figure out a way to input both players names and have those save to playerOne and playerTwo
+	prompt(`Please input your name`);
+	// prompt(`Please input your name, ${playerTwo.name}`);
 	game.start();
 	game.generatemainNum();
 	game.generateplayerNums();
@@ -164,6 +172,8 @@ $('#dealbutton').on('click', ()=>{
 	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
 })
 $('#checkarrays').on('click', ()=>{
-	console.log(game.checkMatchesOne(game.playeroneNum));
-	console.log(game.checkMatchesTwo(game.playertwoNum));
+	console.log(game.checkMatches(game.playeroneNum));
+	console.log(game.checkMatches(game.playertwoNum));
 })
+
+

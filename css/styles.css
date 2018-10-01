@@ -1,3 +1,21 @@
-#mainnum {
-	background-color: pink;
+body{
+	background-color: #477148;
+}
+
+.maingame {
+	display: flex;
+	flex-direction: column;
+	/*justify-content: space-between;*/
+}
+
+.compDiv {
+	background-color:beige;
+	height: 100px;
+	width: 100px;
+}
+
+.playerDiv {
+	background-color:lightblue;
+	height:100px;
+	width: 100px;
 }
