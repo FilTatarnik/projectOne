@@ -2,32 +2,31 @@ body{
 	background-color: #477148;
 }
 
-.maingame {
+#maingame {
 	display: flex;
 	flex-direction: column;
 /*	justify-content: space-between;
 */	align-items: center;
 }
 
-.compDiv {
+#compDiv {
 	border: 1px solid black;
-	margin: 150px;
+	/*margin: 150px;*/
 	height: 300px;
 	width: 300px;
 }
 
 
-.playergame {
+#playergame {
 	display: flex;
 	justify-content: space-between;
 }
-.playerDiv1 {
-
+#playerDiv1 {
 	border: 1px solid black;
 	height:300px;
 	width: 300px;
 }
-.playerDiv2 {
+#playerDiv2 {
 	border: 1px solid black;
 	height:300px;
 	width: 300px;

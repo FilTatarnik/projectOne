@@ -99,10 +99,13 @@ const game = {
 	start() {
 		/*ohh so every time the game 'starts', two players are made with the properties i gave the . the player blueprint i made down there. everyone on of those blueprints are gonna need properties, so think of it like how you would actually build a player in a game, ykno he has a name, in this case he has a score and he has numbers that we're going to randomly generate and give him to see if he has a match with the mainNum */
 		//this should be connected to a button and it instantiates a player
+		
+
 		const playerOne = new Player('playerOne', 0);
 		const playerTwo = new Player('playerTwo', 0);	
 	}
 };
+
 
 // }
 
@@ -120,12 +123,11 @@ class Player {
 	}
 
 	increaseScore(){
-		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-			score++;
+		// if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+		// 	score++;
 		}
-
 		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
-	}
+	
 
 	checkHand(){
 		/*playerNums === mainNum generated) score++*/
@@ -162,11 +164,12 @@ event listeners
 *********************************************************************************/	
 $('#dealbutton').on('click', ()=>{
 	//figure out a way to input both players names and have those save to playerOne and playerTwo
-	prompt(`Please input your name`);
+	// prompt(`Please input your name`);
 	// prompt(`Please input your name, ${playerTwo.name}`);
 	game.start();
 	game.generatemainNum();
 	game.generateplayerNums();
+	$('#compDiv').append(game.mainNum);
 	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
 	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
 	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
@@ -175,5 +178,6 @@ $('#checkarrays').on('click', ()=>{
 	console.log(game.checkMatches(game.playeroneNum));
 	console.log(game.checkMatches(game.playertwoNum));
 })
+
 
 
