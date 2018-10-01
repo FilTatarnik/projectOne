@@ -5,17 +5,30 @@ body{
 .maingame {
 	display: flex;
 	flex-direction: column;
-	/*justify-content: space-between;*/
+/*	justify-content: space-between;
+*/	align-items: center;
 }
 
 .compDiv {
-	background-color:beige;
-	height: 100px;
-	width: 100px;
+	border: 1px solid black;
+	margin: 150px;
+	height: 300px;
+	width: 300px;
 }
 
-.playerDiv {
-	background-color:lightblue;
-	height:100px;
-	width: 100px;
+
+.playergame {
+	display: flex;
+	justify-content: space-between;
+}
+.playerDiv1 {
+
+	border: 1px solid black;
+	height:300px;
+	width: 300px;
+}
+.playerDiv2 {
+	border: 1px solid black;
+	height:300px;
+	width: 300px;
 }
