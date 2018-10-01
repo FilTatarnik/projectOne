@@ -30,13 +30,13 @@ const game = {
 	interval: null,
 	player1: null,
 	player2: null,
-	player3: null, /*so you're making a game object and the object is just like building a game. generalize
+	// player3: null, /*so you're making a game object and the object is just like building a game. generalize
 	// how a game is made up. a timer, a scoreboard, the players playing. speaking of wouldn't you need to make the court, thats the exterior htmlcss i think. the functions you make simulate the actions/verbs that would happen on the court and as the game's playing ykno*/
 	
 	generatemainNum(){/*and take the num and put it in the empty spot up there under score*/
 	
 		for(let i = 0; i < 1; i ++){
-			this.mainNum.push(Math.floor(Math.random() * 20));
+			this.mainNum.push(Math.floor(Math.random() * 20))
 			
 			/*show once and emptyArray*/
 
@@ -50,33 +50,24 @@ const game = {
 		}
 
 		for(let i = 0; i < 10; i ++){
-			this.playertwoNum.push(Math.floor(Math.random() * 20));
+			this.playertwoNum.push(Math.floor(Math.random() * 20))
 		
 		}
-		for(let i = 0; i < 10; i ++){
-			this.playerthreeNum.push(Math.floor(Math.random() * 20));
-		
-		}
-	
 	},
 
 	checkMatches(){
 		if(this.playeroneNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
-			return false
+			return false;
 		}
 		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
-			return false					/*playertwo and playerthree check num  are connected to the playeroneNum and even if the number is in the array it'll say false. it's connected to the first set of numbers. idk why*/
+			return false;					/*playertwo and playerthree check num  are connected to the playeroneNum and even if the number is in the array it'll say false. it's connected to the first set of numbers. idk why*/
 
 		}
-		if(this.playerthreeNum.indexOf(this.mainNum[0]) !== -1){
-			return true;
-		} else {
-			return false
-		}		
+
 		// if(this.playeroneNum.includes(this.playertwoNum)){
 		// 	console.log(true);;
 		// } 
@@ -115,9 +106,7 @@ const game = {
 
 		//this should be connected to a button and it instantiates a player
 		const playerOne = new Player('playerOne', 0);
-		const playerTwo = new Player('playerTwo', 0);
-		const playerThree = new Player('playerThree', 0);
-	
+		const playerTwo = new Player('playerTwo', 0);	
 	}
 };
 
@@ -134,8 +123,6 @@ class Player {
 		this.name = name;
 		this.score = 0;
 		this.nums = [];
-
-
 }
 	increaseScore(){
 		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
@@ -177,15 +164,12 @@ $('#dealbutton').on('click', ()=>{
 	game.start();
 	game.generatemainNum();
 	game.generateplayerNums();
-	// game.checkMatches();
-	console.log(game.mainNum);
-	console.log(game.playeroneNum);
+	game.checkMatches();
+	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
+	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
 	console.log(game.checkMatches(game.playeroneNum));
-	console.log(game.playertwoNum);
+	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
 	console.log(game.checkMatches(game.playertwoNum));
-	console.log(game.playerthreeNum);
-	// console.log(game.checkMatches(game.playerthreeNum));
-
 	// console.log(game.checkMatches());
 })
 $('#checkarrays').on('click', ()=>{
