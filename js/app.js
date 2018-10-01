@@ -24,8 +24,6 @@ const game = {
 	mainNum: [],  
 	playeroneNum: [], 
 	playertwoNum: [],
-	playerthreeNum: [],
-
 	interval: null,
 	player1: null,
 	player2: null,
@@ -95,7 +93,7 @@ This generates the player numbers that are trying to match the number above ^
 /**************************************************************
 This function checks to see if the players numbers match the computers
 **************************************************************/
-	checkMatches(player){
+	checkMatches(){
 		if(this.playeroneNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
@@ -103,13 +101,13 @@ This function checks to see if the players numbers match the computers
 		}	
 	},
 
-	// checkMatchesTwo(){
-	// 	if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	  }
-	// },
+	checkMatchesTwo(){
+		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+			return true;
+		} else {
+			return false;
+		  }
+	},
 
 	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
 	//while loops
@@ -145,7 +143,23 @@ This function checks to see if the players numbers match the computers
 
 		// const playerOne = new Player('playerOne', 0);
 		// const playerTwo = new Player('playerTwo', 0);
-	}
+	},
+/*********************************************************************************
+TIMER INTERVALS
+*********************************************************************************/	
+//overall timer that will decrease by one second from 60, when it reaches zero. stop game and check players scores, if playerOne score > playerTwo Score, playerOne wins, otherwise playerTwo wins
+		setTimer() {
+			let time = 0;
+			this.interval = setInterval(()=>{
+				time++;
+				if(time % 4 === 0){
+					game.generatemainNum();
+				}
+				$('#timer').text('Timer ' + time);
+			}, 500)
+
+		},
+
 };
 
 /**************************************************************
@@ -185,25 +199,12 @@ If the player has a matching number add one to score
 END PLAYER OBJECT
 **************************************************************/	
 /*********************************************************************************
-TIMER INTERVALS
-*********************************************************************************/	
-//overall timer that will decrease by one second from 60, when it reaches zero. stop game and check players scores, if playerOne score > playerTwo Score, playerOne wins, otherwise playerTwo wins
-
-// setTimer() {
-// 	let time = 0;
-// 	this.interval = setInterval(()=>{
-// 		time++;
-
-// 	}, 1000)
-	
-// }
-
-/*********************************************************************************
 event listeners
 *********************************************************************************/	
 $('#dealbutton').on('click', ()=>{
 	// game.start();
 	game.setNameandStartGame();
+	game.setTimer();
 	game.generatemainNum();
 	game.generateplayerNums();
 	$('#compDiv').append(game.mainNum);
@@ -214,18 +215,19 @@ $('#dealbutton').on('click', ()=>{
 	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
 	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
 	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
-})
+});
 /**************************************************************
 This checks if the numbers in the player arrays mactch the number in the computer array
 **************************************************************/
 $('#checkarrays').on('click', ()=>{
 	console.log(game.checkMatches(game.playeroneNum));
-	console.log(game.checkMatches(game.playertwoNum));
-})
 
-$('#playerTwoNameBut').on('click', ()=>{
-	// game.setNameandStartGame();
-})
+	console.log(game.checkMatchesTwo(game.playertwoNum));
+});
+
+// $('#playerOneNameBut').on('click', ()=>{
+// 	console.log('workds');
+// });
 
 
 
