@@ -84,6 +84,7 @@ This generates the player numbers that are trying to match the number above ^
 		// let playerNum = [];
 		for(let i = 0; i < 10; i ++){
 			this.playeroneNum.push(Math.floor(Math.random() * 20))
+
 		}
 
 		for(let i = 0; i < 10; i ++){
@@ -207,6 +208,8 @@ $('#dealbutton').on('click', ()=>{
 	game.generateplayerNums();
 	$('#compDiv').append(game.mainNum);
 	$('#playerDiv1').append(game.playeroneNum);
+	$('#playerDiv2').append(game.playertwoNum);
+
 
 	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
 	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
@@ -224,3 +227,7 @@ $('#playerTwoNameBut').on('click', ()=>{
 	// game.setNameandStartGame();
 })
 
+
+
+//IF PLAYERONENUM&PLAYERTWONUM INCLUDE MAINNUM, ENABLE BUTTON THAT ADDS 1 TO SCORE
+//IF PLAYERONENUM&PLAYERTWONUM DO NOT INCLUDE MAINNUM, DISABLE BUTTON THAT ADDS 1 TO SCORE.
