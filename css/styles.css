@@ -22,12 +22,21 @@ body{
 	justify-content: space-between;
 }
 #playerDiv1 {
-	border: 1px solid black;
+	/*display: flex;*/
+	/*margin: 0 auto;*/
+	border: 1px dotted black;
 	height:300px;
 	width: 300px;
 }
 #playerDiv2 {
-	border: 1px solid black;
+	border: 1px dotted black;
 	height:300px;
 	width: 300px;
+}
+#playerOneInput {
+	text-align: center;
+}
+
+#pOneDisplay {
+	max-width: 20%;
 }

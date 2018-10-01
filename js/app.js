@@ -32,6 +32,44 @@ const game = {
 	// player3: null, /*so you're making a game object and the object is just like building a game. generalize
 	// how a game is made up. a timer, a scoreboard, the players playing. speaking of wouldn't you need to make the court, thats the exterior htmlcss i think. the functions you make simulate the actions/verbs that would happen on the court and as the game's playing ykno*/
 	
+/**************************************************************
+This function makes the players and starts the game
+**************************************************************/
+	setNameandStartGame(){
+
+
+		//get the name
+		const name = $('#playerOneInput').val()
+		//instantiate, pass in name, (get from input with jquery)
+		const fil = new Player(name);
+
+		this.player = fil;
+
+		$('#playerOneInput').hide();
+
+		$('#playerOneNameBut').hide();
+
+		$('#pOneDisplay').append(name);
+
+
+
+		const nameTwo = $('#playerTwoInput').val()
+		//instantiate, pass in name, (get from input with jquery)
+		const playerTwo = new Player(nameTwo);
+
+		this.player = playerTwo;
+
+		$('#playerTwoInput').hide();
+
+		$('#playerTwoNameBut').hide();
+
+		$('#pTwoDisplay').append(nameTwo);
+
+	},
+
+/**************************************************************
+This generates the main number 
+**************************************************************/
 	generatemainNum(){
 		/*and take the num and put it in the empty spot up there under score*/
 		this.mainNum.push(Math.floor(Math.random() * 20))
@@ -39,7 +77,9 @@ const game = {
 			/*show once and emptyArray*/
 
 	},
-
+/**************************************************************
+This generates the player numbers that are trying to match the number above ^
+**************************************************************/
 	generateplayerNums(){	
 		// let playerNum = [];
 		for(let i = 0; i < 10; i ++){
@@ -51,7 +91,9 @@ const game = {
 		
 		}
 	},
-
+/**************************************************************
+This function checks to see if the players numbers match the computers
+**************************************************************/
 	checkMatches(player){
 		if(this.playeroneNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
@@ -99,14 +141,15 @@ const game = {
 	start() {
 		/*ohh so every time the game 'starts', two players are made with the properties i gave the . the player blueprint i made down there. everyone on of those blueprints are gonna need properties, so think of it like how you would actually build a player in a game, ykno he has a name, in this case he has a score and he has numbers that we're going to randomly generate and give him to see if he has a match with the mainNum */
 		//this should be connected to a button and it instantiates a player
-		
 
-		const playerOne = new Player('playerOne', 0);
-		const playerTwo = new Player('playerTwo', 0);	
+		// const playerOne = new Player('playerOne', 0);
+		// const playerTwo = new Player('playerTwo', 0);
 	}
 };
 
-
+/**************************************************************
+END GAME OBJECT
+**************************************************************/
 // }
 
 
@@ -121,7 +164,9 @@ class Player {
 		this.score = 0;
 		this.nums = [];
 	}
-
+/**************************************************************
+If the player has a matching number add one to score
+**************************************************************/
 	increaseScore(){
 		// if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
 		// 	score++;
@@ -135,16 +180,9 @@ class Player {
 	}
 
 }
-
-
-
-
-// /*********************************************************************************
-// GAME WON FUNCTION, CHECKS PLAYERS SCORES, IF SCORE IS === X, RUN GAMEWON FUNCTION
-// ********************************************************************************	
-// ********************************************************************************
-// INCREASE SCORE FUNCTION, THIS FUNCTION RUNS IF A # IN PLAYERS HAND MATCHES MAIN NUMBER GENERATED
-// ********************************************************************************		
+/**************************************************************
+END PLAYER OBJECT
+**************************************************************/	
 /*********************************************************************************
 TIMER INTERVALS
 *********************************************************************************/	
@@ -163,21 +201,26 @@ TIMER INTERVALS
 event listeners
 *********************************************************************************/	
 $('#dealbutton').on('click', ()=>{
-	//figure out a way to input both players names and have those save to playerOne and playerTwo
-	// prompt(`Please input your name`);
-	// prompt(`Please input your name, ${playerTwo.name}`);
-	game.start();
+	// game.start();
+	game.setNameandStartGame();
 	game.generatemainNum();
 	game.generateplayerNums();
 	$('#compDiv').append(game.mainNum);
+	$('#playerDiv1').append(game.playeroneNum);
+
 	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
 	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
 	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
 })
+/**************************************************************
+This checks if the numbers in the player arrays mactch the number in the computer array
+**************************************************************/
 $('#checkarrays').on('click', ()=>{
 	console.log(game.checkMatches(game.playeroneNum));
 	console.log(game.checkMatches(game.playertwoNum));
 })
 
-
+$('#playerTwoNameBut').on('click', ()=>{
+	// game.setNameandStartGame();
+})
 

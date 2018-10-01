@@ -7,23 +7,49 @@
 	</title>
 </head>
 <body>
-
-
 	<button id="dealbutton">Deal</button>
 	<button id="checkarrays">checkToSeeIfAnyMatches</button>
 	<div id="mainnum"></div>
 	<div id="playernums"></div>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+
+<!--where the main game happens-->
+	<container id="maingame">
+		<div id="compDiv"></div>
+	</container>
+	
+<!--where the players information will get fed to-->
+	
+
+	<container id="playergame">
+<!--player 1 screen-->
+		<div>
+			<h2 id="pOneDisplay"></h2>
+		<!--where the random numbers will appear-->
+			<div id="playerDiv1">
+				<input type="text" name="name" id="playerOneInput">
+					<button id="playerOneNameBut">
+						
+					</button>
+			</div>
+		</div>
+<!--player 2 screen-->
+		<div>
+			<h2 id="pTwoDisplay"></h2>
+			<!--where the random numbers will appear-->
+			<div id="playerDiv2">
+				<input type="text" name="name" id="playerTwoInput">
+					<button id="playerTwoNameBut">
+						
+					</button>
+			</div>
+		</div>
 
 
-<container id="maingame">
-	<div id="compDiv"></div>
-</container>
-<container id="playergame">
-	<div id="playerDiv1"></div>
-	<div id="playerDiv2"></div>
-</container>
+<!----->
+	</container>
+
 </body>
 
 
