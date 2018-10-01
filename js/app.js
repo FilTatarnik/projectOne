@@ -79,16 +79,35 @@ This generates the main number
 This generates the player numbers that are trying to match the number above ^
 **************************************************************/
 	generateplayerNums(){	
-		// let playerNum = [];
-		for(let i = 0; i < 10; i ++){
-			this.playeroneNum.push(Math.floor(Math.random() * 20))
-
-		}
-
-		for(let i = 0; i < 10; i ++){
-			this.playertwoNum.push(Math.floor(Math.random() * 20))
 		
+		// empty out the player divs -- remove all previous numbers
+
+		// make player 1 nums be empty
+
+		this.playeroneNum = [];
+		for(let i = 0; i < 10; i++){
+
+			this.playeroneNum.push(Math.floor(Math.random() * 20))
+			// create div with numStyle and add
+
 		}
+
+		// make player 2 nums be empty
+
+		this.playertwoNum = []
+		for(let i = 0; i < 10; i++){
+
+			// get the number in a variable
+
+			// push it into array
+			this.playertwoNum.push(Math.floor(Math.random() * 20))
+
+			
+
+			// create div and add to player 2
+			
+		}
+
 	},
 /**************************************************************
 This function checks to see if the players numbers match the computers
@@ -145,23 +164,36 @@ This function checks to see if the players numbers match the computers
 		// const playerTwo = new Player('playerTwo', 0);
 	},
 /*********************************************************************************
-TIMER INTERVALS
+TIMER INTERVALS -- this determines when the random numbers get regenerated
 *********************************************************************************/	
-//overall timer that will decrease by one second from 60, when it reaches zero. stop game and check players scores, if playerOne score > playerTwo Score, playerOne wins, otherwise playerTwo wins
 		setTimer() {
 			let time = 0;
 			this.interval = setInterval(()=>{
 				time++;
-				if(time % 4 === 0){
-					game.generatemainNum();
+
+				// updating computer number
+				if(time % 5 === 0){
+					this.generatemainNum()
+					$('#compDiv').text(this.mainNum);
+					game.mainNum = []
 				}
+				// update player numbers
+				if(time % 3 === 0){
+					this.generateplayerNums()
+					$('#playerDiv1').text(this.playeroneNum);
+					$('#playerDiv2').text(this.playertwoNum);
+					game.playeroneNum = []
+					game.playertwoNum = []
+				}
+
 				$('#timer').text('Timer ' + time);
+
 			}, 500)
 
 		},
 
 };
-
+$(document).on('keypress', (e) => { if(e.key==="n") clearInterval(game.interval) })
 /**************************************************************
 END GAME OBJECT
 **************************************************************/
@@ -224,12 +256,5 @@ $('#checkarrays').on('click', ()=>{
 
 	console.log(game.checkMatchesTwo(game.playertwoNum));
 });
-
-// $('#playerOneNameBut').on('click', ()=>{
-// 	console.log('workds');
-// });
-
-
-
 //IF PLAYERONENUM&PLAYERTWONUM INCLUDE MAINNUM, ENABLE BUTTON THAT ADDS 1 TO SCORE
 //IF PLAYERONENUM&PLAYERTWONUM DO NOT INCLUDE MAINNUM, DISABLE BUTTON THAT ADDS 1 TO SCORE.
