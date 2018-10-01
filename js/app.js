@@ -13,7 +13,6 @@ MVP
 8.Reset
 *********************************************************************************/
 //goal for today. push random numbers into main
-
 // console.log('works');
 /*********************************************************************************
 OBJECTS IN GAME; GAME, PLAYER OBJECTS
@@ -33,14 +32,13 @@ const game = {
 	// player3: null, /*so you're making a game object and the object is just like building a game. generalize
 	// how a game is made up. a timer, a scoreboard, the players playing. speaking of wouldn't you need to make the court, thats the exterior htmlcss i think. the functions you make simulate the actions/verbs that would happen on the court and as the game's playing ykno*/
 	
-	generatemainNum(){/*and take the num and put it in the empty spot up there under score*/
+	generatemainNum(){
+		/*and take the num and put it in the empty spot up there under score*/
 	
-		for(let i = 0; i < 1; i ++){
 			this.mainNum.push(Math.floor(Math.random() * 20))
 			
 			/*show once and emptyArray*/
 
-		}
 	},
 
 	generateplayerNums(){	
@@ -55,26 +53,30 @@ const game = {
 		}
 	},
 
-	checkMatches(){
+	checkMatchesOne(){
 		if(this.playeroneNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
 			return false;
-		}
-		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-			return true;
-		} else {
-			return false;					/*playertwo and playerthree check num  are connected to the playeroneNum and even if the number is in the array it'll say false. it's connected to the first set of numbers. idk why*/
-
-		}
+		}	
+							/*playertwo and playerthree check num  are connected to the playeroneNum and even if the number is in the array it'll say false. it's connected to the first set of numbers. idk why*/
+		// }
 
 		// if(this.playeroneNum.includes(this.playertwoNum)){
 		// 	console.log(true);;
 		// } 
 	},
 
-	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
+	checkMatchesTwo(){
+		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+			return true;
+		} else {
+			return false;
+	}
+	},
 
+	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
+	//while loops
 	},
 
 	gameWon() {
@@ -164,15 +166,15 @@ $('#dealbutton').on('click', ()=>{
 	game.start();
 	game.generatemainNum();
 	game.generateplayerNums();
-	game.checkMatches();
+	// game.checkMatches();
 	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
 	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
-	console.log(game.checkMatches(game.playeroneNum));
+	console.log(game.checkMatchesOne(game.playeroneNum));
 	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
-	console.log(game.checkMatches(game.playertwoNum));
+	console.log(game.checkMatchesTwo(game.playertwoNum));
 	// console.log(game.checkMatches());
 })
-$('#checkarrays').on('click', ()=>{
-	game.checkMatches();
-	console.log('works');
-})
+// $('#checkarrays').on('click', ()=>{
+// 	game.checkMatches();
+// 	console.log('works');
+// })
