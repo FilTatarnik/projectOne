@@ -120,10 +120,10 @@ This generates the player numbers that are trying to match the number above ^
 			
 			//put the number in the div
 			$div.text(num);
-			console.log($div);
+			// console.log($div);
 
 			//append div to pOne container
-			console.log($('#playerDiv1'));
+			// console.log($('#playerDiv1'));
 			
 			// put number divon the screen
 			$('#playerDiv1').append($div);
@@ -161,21 +161,32 @@ This generates the player numbers that are trying to match the number above ^
 /**************************************************************
 This function checks to see if the players numbers match the computers
 **************************************************************/
-	checkMatches(){
+	checkMatches(player){
 		if(this.playeroneNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
 			return false;
-		}	
+		}
+		// if players's array of numbers contains main num
+			// return true/
+		// else 
+			// return false
 	},
 
-	checkMatchesTwo(){
-		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-			return true;
-		} else {
-			return false;
-		  }
-	},
+	// checkMatchesTwo(player) {
+
+		// if players's array of numbers contains main num
+			// return true/
+		// else 
+			// return false
+
+
+	// 	if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	  }
+	// },
 
 	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
 	//while loops
@@ -228,17 +239,18 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 			if(time % 5 === 0){
 				this.generateplayerNums()
 				this.checkMatches()
-				this.checkMatchesTwo()
+				// console.log(checkMatches());
+				// this.checkMatchesTwo()
 			}
 
 			$('#timer').text('Timer ' + time);
 
-		}, 1000)
+		}, 800)
 
 	},
 
 };
-// $(document).on('keypress', (e) => { if(e.key==="n") clearInterval(game.interval); });
+
 /**************************************************************
 END GAME OBJECT
 **************************************************************/
@@ -277,7 +289,19 @@ END PLAYER OBJECT
 **************************************************************/	
 /*********************************************************************************
 event listeners
-*********************************************************************************/	
+*********************************************************************************/
+$(document).on('keypress', (e) => { 
+	if(e.key==="/") {
+		console.log('/ works')
+		// checkMatches(game.player1);
+
+	} if(e.key==="z"){
+		console.log('workds');
+	}
+})
+//connect z and / to checkMatches function, and if checkmatches function = true add one to score.
+
+// $(document).on('keypress', (e) => { if(e.key==="z");
 $('#dealbutton').on('click', ()=>{
 	// game.start();
 	game.setNameandStartGame();
@@ -294,8 +318,9 @@ $('#dealbutton').on('click', ()=>{
 This checks if the numbers in the player arrays mactch the number in the computer array
 **************************************************************/
 $('#checkarrays').on('click', ()=>{
-	console.log(game.checkMatches(game.playeroneNum));
-	console.log(game.checkMatchesTwo(game.playertwoNum));
+	console.log(game.checkMatches(Player));
+	
+	// console.log(game.checkMatchesTwo(game.playertwoNum));
 });
 //IF PLAYERONENUM&PLAYERTWONUM INCLUDE MAINNUM, ENABLE BUTTON THAT ADDS 1 TO SCORE
 //IF PLAYERONENUM&PLAYERTWONUM DO NOT INCLUDE MAINNUM, DISABLE BUTTON THAT ADDS 1 TO SCORE.
