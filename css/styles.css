@@ -12,7 +12,7 @@ body{
 }
 
 #compDiv {
-	border: 10px solid brown;
+	/*border: 10px solid brown;*/
 	border-radius: 20px;
 
 	/*margin: 150px;*/
@@ -20,6 +20,18 @@ body{
 	width: 300px;
 }
 
+#dealbutton {
+	opacity: .3;
+	height: 50px;
+}
+#checkarrays {
+	opacity: .3;
+	height: 50px;
+}
+#refreshbutton {
+	opacity: .3;
+	height: 50px;
+}
 
 #playergame {
 	display: flex;

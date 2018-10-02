@@ -12,8 +12,6 @@ MVP
 7.If playerXscore === 10 or 20, run gameWon function and stop interval timers and tell the player who won that they won
 8.Reset
 *********************************************************************************/
-//goal for today. push random numbers into main
-// console.log('works');
 /*********************************************************************************
 OBJECTS IN GAME; GAME, PLAYER OBJECTS
 *********************************************************************************/
@@ -173,7 +171,7 @@ This function checks to see if the players numbers match the computers
 			// return false
 	},
 
-	// checkMatchesTwo(player) {
+	checkMatchesTwo(player) {
 
 		// if players's array of numbers contains main num
 			// return true/
@@ -181,12 +179,12 @@ This function checks to see if the players numbers match the computers
 			// return false
 
 
-	// 	if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	  }
-	// },
+		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
+			return true;
+		} else {
+			return false;
+		  }
+	},
 
 	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
 	//while loops
@@ -208,21 +206,6 @@ This function checks to see if the players numbers match the computers
 	gameTimer() {
 				// this function will have somehting to do with the set interval and the timer that comes from the set interval will have something to do with how long the game will go for, meaning that this'll dictate how long the other functions are going to run, so either player has enough time to hit 10 points. 
 	},
-
-	// checkMatches(){
-	// 	if(this.playeroneNum && this.playertwoNum === this.mainNum){
-	// 		console.log('theres a match somewhere');
-	// 	}
-		//the function needs to loop through all three arrays and check if there are any similar numbers in all three arrays
-
-	// },
-	start() {
-		/*ohh so every time the game 'starts', two players are made with the properties i gave the . the player blueprint i made down there. everyone on of those blueprints are gonna need properties, so think of it like how you would actually build a player in a game, ykno he has a name, in this case he has a score and he has numbers that we're going to randomly generate and give him to see if he has a match with the mainNum */
-		//this should be connected to a button and it instantiates a player
-
-		// const playerOne = new Player('playerOne', 0);
-		// const playerTwo = new Player('playerTwo', 0);
-	},
 /*********************************************************************************
 TIMER INTERVALS -- this determines when the random numbers get regenerated
 *********************************************************************************/	
@@ -232,15 +215,12 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 			time++;
 
 			// updating computer number
-			if(time % 7 === 0){
+			if(time % 3 === 0){
 				 this.generatemainNum()
 			}
 			// update player numbers
-			if(time % 5 === 0){
+			if(time % 3 === 0){
 				this.generateplayerNums()
-				this.checkMatches()
-				// console.log(checkMatches());
-				// this.checkMatchesTwo()
 			}
 
 			$('#timer').text('Timer ' + time);
@@ -254,14 +234,9 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 /**************************************************************
 END GAME OBJECT
 **************************************************************/
-// }
-
-
-//now make a function that runs every time the numbers are dealt to both players and the PC. then check to see if the playernum arrays have any numbers in common with the mainnum array
-
-// ********************************************************************************
-// THIS IS THE MAIN PLAYER CLASS, BLUEPRINT FOR WHEN PLAYERS INPUT THEIR NAME AND MAKE THEIR PLAYER
-// ********************************************************************************
+/********************************************************************************
+THIS IS THE MAIN PLAYER CLASS, BLUEPRINT FOR WHEN PLAYERS INPUT THEIR NAME AND MAKE THEIR PLAYER
+********************************************************************************/
 class Player {
 	constructor(name) {
 		this.name = name;
@@ -292,35 +267,22 @@ event listeners
 *********************************************************************************/
 $(document).on('keypress', (e) => { 
 	if(e.key==="/") {
-		console.log('/ works')
+	console.log(game.checkMatches(game.playeroneNum));
 		// checkMatches(game.player1);
 
 	} if(e.key==="z"){
-		console.log('workds');
+	console.log(game.checkMatchesTwo(game.playertwoNum));
 	}
 })
 //connect z and / to checkMatches function, and if checkmatches function = true add one to score.
-
-// $(document).on('keypress', (e) => { if(e.key==="z");
 $('#dealbutton').on('click', ()=>{
-	// game.start();
 	game.setNameandStartGame();
-	// game.generatemainNum();
-	// game.generateplayerNums();
-	// $('#compDiv').append(game.mainNum);
-	// $('#playerDiv1').text(game.playeroneNum);
-	// $('#playerDiv2').text(game.playertwoNum);
-	// console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
-	// console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
-	// console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
+
 });
 /**************************************************************
 This checks if the numbers in the player arrays mactch the number in the computer array
 **************************************************************/
-$('#checkarrays').on('click', ()=>{
-	console.log(game.checkMatches(Player));
-	
-	// console.log(game.checkMatchesTwo(game.playertwoNum));
-});
-//IF PLAYERONENUM&PLAYERTWONUM INCLUDE MAINNUM, ENABLE BUTTON THAT ADDS 1 TO SCORE
-//IF PLAYERONENUM&PLAYERTWONUM DO NOT INCLUDE MAINNUM, DISABLE BUTTON THAT ADDS 1 TO SCORE.
+// $('#checkarrays').on('click', ()=>{
+// 	console.log(game.checkMatches(game.playeroneNum));
+// 	console.log(game.checkMatchesTwo(game.playertwoNum));
+// });
