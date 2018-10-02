@@ -21,13 +21,13 @@ const game = {
 	time: null,
 	score: null,
 	rounds: null,
-	mainNum: null,  
+	mainNum: [],  
 	playeroneNum: [], 
 	playertwoNum: [],
 	interval: null,
 	player1: null,
 	player2: null,
-	// player3: null, /*so you're making a game object and the object is just like building a game. generalize
+	/*so you're making a game object and the object is just like building a game. generalize
 	// how a game is made up. a timer, a scoreboard, the players playing. speaking of wouldn't you need to make the court, thats the exterior htmlcss i think. the functions you make simulate the actions/verbs that would happen on the court and as the game's playing ykno*/
 	
 /**************************************************************
@@ -76,12 +76,20 @@ This function makes the players and starts the game
 This generates the main number 
 **************************************************************/
 	generatemainNum(){
+		this.mainNum = [],
 		/*and take the num and put it in the empty spot up there under score*/
-		this.mainNum = Math.floor(Math.random() * 20)
+		// this.mainNum = (Math.floor(Math.random() * 20))
+		$('#compDiv').text("");
+			const num = (Math.floor(Math.random() * 20))
+			this.mainNum.push(num);
 
+			const $div = $('<div></div>')
+
+			$div.text(num);
+
+			$('#compDiv').append($div);
 			
-			/*show once and emptyArray*/
-
+		//main number is generating and getting stored in this.mainNum but it isn't getting refreshed everytime the setInterval is being run.
 	},
 /**************************************************************
 This generates the player numbers that are trying to match the number above ^
@@ -121,7 +129,7 @@ This generates the player numbers that are trying to match the number above ^
 			$('#playerDiv1').append($div);
 		}
 
-		
+
 		// make player 2 nums be empty
 
 		this.playertwoNum = []
@@ -214,7 +222,7 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 
 			// updating computer number
 			if(time % 7 === 0){
-				this.generatemainNum()
+				 this.generatemainNum()
 			}
 			// update player numbers
 			if(time % 5 === 0){
@@ -230,7 +238,7 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 	},
 
 };
-$(document).on('keypress', (e) => { if(e.key==="n") clearInterval(game.interval); });
+// $(document).on('keypress', (e) => { if(e.key==="n") clearInterval(game.interval); });
 /**************************************************************
 END GAME OBJECT
 **************************************************************/
@@ -275,7 +283,7 @@ $('#dealbutton').on('click', ()=>{
 	game.setNameandStartGame();
 	// game.generatemainNum();
 	// game.generateplayerNums();
-	$('#compDiv').append(game.mainNum);
+	// $('#compDiv').append(game.mainNum);
 	// $('#playerDiv1').text(game.playeroneNum);
 	// $('#playerDiv2').text(game.playertwoNum);
 	// console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
