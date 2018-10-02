@@ -21,7 +21,7 @@ const game = {
 	time: null,
 	score: null,
 	rounds: null,
-	mainNum: [],  
+	mainNum: null,  
 	playeroneNum: [], 
 	playertwoNum: [],
 	interval: null,
@@ -63,6 +63,13 @@ This function makes the players and starts the game
 
 		$('#pTwoDisplay').append(nameTwo);
 
+
+
+		game.setTimer();
+		game.generatemainNum();
+		game.generateplayerNums();
+
+
 	},
 
 /**************************************************************
@@ -70,7 +77,8 @@ This generates the main number
 **************************************************************/
 	generatemainNum(){
 		/*and take the num and put it in the empty spot up there under score*/
-		this.mainNum.push(Math.floor(Math.random() * 20))
+		this.mainNum = Math.floor(Math.random() * 20)
+
 			
 			/*show once and emptyArray*/
 
@@ -78,34 +86,67 @@ This generates the main number
 /**************************************************************
 This generates the player numbers that are trying to match the number above ^
 **************************************************************/
-	generateplayerNums(){	
-		
-		// empty out the player divs -- remove all previous numbers
-
+	generateplayerNums(){		
 		// make player 1 nums be empty
-
 		this.playeroneNum = [];
+
+		//clear the old numbers from the screen
+		$('#playerDiv1').text("");
+		
+		//makes 10 random numbers and writes them to the screen
 		for(let i = 0; i < 10; i++){
 
-			this.playeroneNum.push(Math.floor(Math.random() * 20))
-			// create div with numStyle and add
+			/// ----------- UPDATE THE DATA ------------------- ///
 
+			// get random number in var num
+			const num = (Math.floor(Math.random() * 20))
+
+			//we're storing the number in a varibale to use later
+			this.playeroneNum.push(num);
+
+
+			/// ------------ UPDATE THE SCREEN to reflect changes in data ---------------- ///
+
+			// create div with numStyle and add
+			const $div = $('<div></div>');
+			
+			//put the number in the div
+			$div.text(num);
+			console.log($div);
+
+			//append div to pOne container
+			console.log($('#playerDiv1'));
+			
+			// put number divon the screen
+			$('#playerDiv1').append($div);
 		}
 
+		
 		// make player 2 nums be empty
 
 		this.playertwoNum = []
+
+		//clear the old numbers from the screen
+		$('#playerDiv2').text("");
+
+		//makes 10 random numbers and writes them to the screen
 		for(let i = 0; i < 10; i++){
 
 			// get the number in a variable
+			const num = (Math.floor(Math.random() * 20))
 
-			// push it into array
-			this.playertwoNum.push(Math.floor(Math.random() * 20))
+			//storing the number in a variable to use later
+			this.playertwoNum.push(num);
+		
+		/// ------------ UPDATE THE SCREEN to reflect changes in data ---------------- ///
+		//create a div
+		const $div = $('<div></div>');
 
-			
+		//put the number we stored in the variable in the div we just declared
+		$div.text(num);
 
-			// create div and add to player 2
-			
+		//append*write* the dive to pTwo container
+		$('#playerDiv2').append($div);				
 		}
 
 	},
@@ -166,34 +207,30 @@ This function checks to see if the players numbers match the computers
 /*********************************************************************************
 TIMER INTERVALS -- this determines when the random numbers get regenerated
 *********************************************************************************/	
-		setTimer() {
-			let time = 0;
-			this.interval = setInterval(()=>{
-				time++;
+	setTimer() {
+		let time = 0;
+		this.interval = setInterval(()=>{
+			time++;
 
-				// updating computer number
-				if(time % 5 === 0){
-					this.generatemainNum()
-					$('#compDiv').text(this.mainNum);
-					game.mainNum = []
-				}
-				// update player numbers
-				if(time % 3 === 0){
-					this.generateplayerNums()
-					$('#playerDiv1').text(this.playeroneNum);
-					$('#playerDiv2').text(this.playertwoNum);
-					game.playeroneNum = []
-					game.playertwoNum = []
-				}
+			// updating computer number
+			if(time % 7 === 0){
+				this.generatemainNum()
+			}
+			// update player numbers
+			if(time % 5 === 0){
+				this.generateplayerNums()
+				this.checkMatches()
+				this.checkMatchesTwo()
+			}
 
-				$('#timer').text('Timer ' + time);
+			$('#timer').text('Timer ' + time);
 
-			}, 500)
+		}, 1000)
 
-		},
+	},
 
 };
-$(document).on('keypress', (e) => { if(e.key==="n") clearInterval(game.interval) })
+$(document).on('keypress', (e) => { if(e.key==="n") clearInterval(game.interval); });
 /**************************************************************
 END GAME OBJECT
 **************************************************************/
@@ -236,24 +273,20 @@ event listeners
 $('#dealbutton').on('click', ()=>{
 	// game.start();
 	game.setNameandStartGame();
-	game.setTimer();
-	game.generatemainNum();
-	game.generateplayerNums();
+	// game.generatemainNum();
+	// game.generateplayerNums();
 	$('#compDiv').append(game.mainNum);
-	$('#playerDiv1').append(game.playeroneNum);
-	$('#playerDiv2').append(game.playertwoNum);
-
-
-	console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
-	console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
-	console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
+	// $('#playerDiv1').text(game.playeroneNum);
+	// $('#playerDiv2').text(game.playertwoNum);
+	// console.log(`The dealer has drawn ${game.mainNum}, See if any of your numbers match.`);
+	// console.log(`PlayerOne has drawn the cards,  ${game.playeroneNum}.`);
+	// console.log(`PlayerTwo has drawn the cards, ${game.playertwoNum}.`);
 });
 /**************************************************************
 This checks if the numbers in the player arrays mactch the number in the computer array
 **************************************************************/
 $('#checkarrays').on('click', ()=>{
 	console.log(game.checkMatches(game.playeroneNum));
-
 	console.log(game.checkMatchesTwo(game.playertwoNum));
 });
 //IF PLAYERONENUM&PLAYERTWONUM INCLUDE MAINNUM, ENABLE BUTTON THAT ADDS 1 TO SCORE
