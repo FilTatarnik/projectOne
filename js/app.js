@@ -248,13 +248,24 @@ class Player {
 If the player has a matching number add one to score
 **************************************************************/
 		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
-	increaseScore(){
+	increaseScoreOne(){
 		if(game.playeroneNum.indexOf(game.mainNum[0]) != -1){
 			this.score++;
-			$('#score1').text('Score: ' + this.score);		
+			$('#score1').text('Score: ' + this.score);	
+		}else {
+			this.score--;
+			$('#score1').text('Score: ' + this.score);	
 		}
-		// if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
-		// 	score++;
+	}
+
+	increaseScoreTwo(){
+		if(game.playertwoNum.indexOf(game.mainNum[0]) != -1){
+			this.score++;
+			$('#score2').text('Score: ' + this.score);	
+		}else {
+			this.score--;
+			$('#score2').text('Score: ' + this.score);	
+		}
 	}
 
 	checkHand(){
@@ -272,14 +283,14 @@ event listeners
 $(document).on('keypress', (e) => { 
 	if(e.key==="z") {
 	console.log(game.checkMatches(game.playeroneNum));
-	game.player.increaseScore();
+	game.player.increaseScoreOne();
 	// increaseScore()
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
 
 	} if(e.key==="/"){
 	console.log(game.checkMatchesTwo(game.playertwoNum));
-	game.player.increaseScore();
+	game.player.increaseScoreTwo();
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
 	}
