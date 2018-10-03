@@ -84,6 +84,7 @@ This generates the main number
 			const $div = $('<div></div>')
 
 			$div.text(num);
+			$div.addClass('matchNum');
 
 			$('#compDiv').append($div);
 			

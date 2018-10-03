@@ -6,6 +6,7 @@ box-shadow: 0 0 200px rgba(0, 0, 0, 8) inset;
 #maingame {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -13,12 +14,18 @@ box-shadow: 0 0 200px rgba(0, 0, 0, 8) inset;
 	color: red;
 	opacity: .4;
 	background-color: black;
-	border: 10px dashed #A0A0A0;
+/*	padding-top: 70px;
+*/	border: 10px dashed #A0A0A0;
 	border-radius: 20px;
 	/*margin: 150px;*/
 	height: 300px;
 	width: 300px;
 }
+
+.matchNum {
+	padding-top: 150px;
+}
+
 #timer {
 	font-family: 'Press Start 2P', cursive;
 	font-size: 20pt;
