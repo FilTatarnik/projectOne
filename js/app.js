@@ -313,7 +313,7 @@ $(document).on('keypress', (e) => {
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
 
-	} if(e.key==="/"){
+	} if(e.key==="m"){
 	console.log(game.checkMatchesTwo(game.playertwoNum));
 	game.player.increaseScoreTwo();
 	// game.gameWon();

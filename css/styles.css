@@ -53,23 +53,23 @@ $div{
 	border: 1px solid black;
 }
 
-.mydiv
-{
-font-family: 'Press Start 2P', cursive;
-padding: 20px;
-width:max-width;
-height:max-height;
-background:black;
-color: white;
-transition-property: margin-left;
-transition-duration: 4s;
--webkit-transition-property: margin-left; /* Safari */
--webkit-transition-duration: 2s; /* Safari */
-  margin-left:-4000px;
+.mydiv {
+	font-family: 'Press Start 2P', cursive;
+	padding: 10px;
+	width:max-width;
+	height:max-height;
+	opacity: .8;
+	background:black;
+	color: white;
+	transition-property: margin-left;
+	transition-duration: 4s;
+	-webkit-transition-property: margin-left; /* Safari */
+	-webkit-transition-duration: 2s; /* Safari */
+	 margin-left:-4000px;
 }
-.mydiv.active
-{
-margin-left:50px;
+
+.mydiv.active {
+	margin-left:50px;
 }
 
 #playergame {
