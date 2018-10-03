@@ -1,4 +1,9 @@
-	
+$(function(){
+    
+    $(".mydiv").addClass("active");
+    console.log($(".mydiv"));
+    
+});	
 /*********************************************************************************
 MVP
 1.Both players can input their name
