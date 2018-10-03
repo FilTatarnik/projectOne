@@ -1,3 +1,4 @@
+	
 /*********************************************************************************
 MVP
 1.Both players can input their name
@@ -71,7 +72,8 @@ This function makes the players and starts the game
 
 	win() {
 		// tell the user they won!
-		$("#gamewon").append('Winner!')
+		$("#gamewon").append('Winner!');
+		// $("#gamewon").velocity("transition.bounceIn", 2000)
 
 		// stop the timer
 		clearInterval(this.interval);
@@ -267,7 +269,7 @@ If the player has a matching number add one to score
 		}else {
 			this.score--;
 			$('#score1').text('Score: ' + this.score);	
-		}if(this.score === 1){
+		}if(this.score === 10){
 				game.win();
 			}
 
@@ -280,7 +282,7 @@ If the player has a matching number add one to score
 		}else {
 			this.score--;
 			$('#score2').text('Score: ' + this.score);	
-		}if(this.score === 1){
+		}if(this.score === 10){
 				game.win();
 			}
 	}
