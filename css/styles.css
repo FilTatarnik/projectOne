@@ -1,6 +1,4 @@
 body{
-	background-image: url(http://getwallpapers.com/wallpaper/full/8/9/d/122242.jpg);
-	background-repeat: no-repeat;
 	background-size: fill;
 /*	background-color: #477148;*/
 }
@@ -14,10 +12,14 @@ body{
 #compDiv {
 	/*border: 10px solid brown;*/
 	border-radius: 20px;
-
 	/*margin: 150px;*/
 	height: 300px;
 	width: 300px;
+}
+#timer {
+	font-family: 'Press Start 2P', cursive;
+	font-size: 20pt;
+
 }
 
 #dealbutton {
@@ -32,34 +34,38 @@ body{
 	opacity: .3;
 	height: 50px;
 }
+$div{
+	border: 1px solid black;
+}
 
 #playergame {
 	display: flex;
 	justify-content: space-between;
 }
 #playerDiv1 {
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Press Start 2P', cursive;
 	border-radius: 15px 50px 30px 5px;
+	/*background-color:lightgray;*/
 	/*border: 5px dotted lightblue;*/
 	text-align: center;
 	font-size: 20pt;
-	height: 325px;
-	width: 300px;
+	height: 375px;
+	/*width: 300px;*/
 	color: black;
 }
 #playerDiv2 {
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Press Start 2P', cursive;
 	font-size: 22pt;
 	border-radius: 30px 50px 15px 15px;
 	/*border: 5px dotted orange;*/
 	text-align: center;
 	font-size: 20pt;
 	height:325px;
-	width: 300px;
+	/*width: 300px;*/
 	color:black;
 }
 #compDiv {
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Press Start 2P', cursive;
 	text-align: center;
 	bottom: 20px;
 	font-size: 20pt;

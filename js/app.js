@@ -18,7 +18,6 @@ OBJECTS IN GAME; GAME, PLAYER OBJECTS
 const game = {
 	time: null,
 	score: null,
-	rounds: null,
 	mainNum: [],  
 	playeroneNum: [], 
 	playertwoNum: [],
@@ -37,9 +36,9 @@ This function makes the players and starts the game
 		//get the name
 		const name = $('#playerOneInput').val()
 		//instantiate, pass in name, (get from input with jquery)
-		const fil = new Player(name);
+		const playerOne = new Player(name);
 
-		this.player = fil;
+		this.player = playerOne;
 
 		$('#playerOneInput').hide();
 
@@ -225,7 +224,7 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 
 			$('#timer').text('Timer ' + time);
 
-		}, 800)
+		}, 1000)
 
 	},
 
@@ -247,6 +246,9 @@ class Player {
 If the player has a matching number add one to score
 **************************************************************/
 	increaseScore(){
+		if(game.playeroneNum.indexOf(this.mainNum[0]) != -1){
+			score++;
+		}
 		// if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
 		// 	score++;
 		}
@@ -266,12 +268,16 @@ END PLAYER OBJECT
 event listeners
 *********************************************************************************/
 $(document).on('keypress', (e) => { 
-	if(e.key==="/") {
+	if(e.key==="z") {
 	console.log(game.checkMatches(game.playeroneNum));
-		// checkMatches(game.player1);
+	// increaseScore()
+	// if number in hand matches main num increaseScore()
+	//else decreaseScore()
 
-	} if(e.key==="z"){
+	} if(e.key==="/"){
 	console.log(game.checkMatchesTwo(game.playertwoNum));
+	// if number in hand matches main num increaseScore()
+	//else decreaseScore()
 	}
 })
 //connect z and / to checkMatches function, and if checkmatches function = true add one to score.
