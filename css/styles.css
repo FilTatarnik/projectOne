@@ -99,4 +99,11 @@ $div{
 	font-family: 'Press Start 2P', cursive;
 }
 
+#pOneDiv {
+	padding-left: 200px;
+}
+
+#pTwoDiv {
+	padding-right: 200px;
+}
 

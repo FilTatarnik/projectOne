@@ -79,6 +79,7 @@ This generates the main number
 		$('#compDiv').text("");
 			const num = (Math.floor(Math.random() * 20))
 			this.mainNum.push(num);
+			$('#compDiv').css('color', "white");
 
 			const $div = $('<div></div>')
 
