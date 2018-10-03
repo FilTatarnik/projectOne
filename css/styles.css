@@ -1,6 +1,7 @@
 body{
 /*	background-color: #477148;*/
-box-shadow: 0 0 200px rgba(0, 0, 0, 8) inset;
+	border: 20px round gray;
+	box-shadow: 0 0 200px rgba(0, 0, 0, 8) inset;
 }
 
 #maingame {
@@ -11,16 +12,19 @@ box-shadow: 0 0 200px rgba(0, 0, 0, 8) inset;
 }
 
 #compDiv {
-	color: red;
-	opacity: .4;
+	opacity: .8;
 	background-color: black;
 /*	padding-top: 70px;
-*/	border: 10px dashed #A0A0A0;
-	border-radius: 20px;
-	/*margin: 150px;*/
+	border-radius: 20px;*/
+	margin: 150px;
+
+  	box-shadow: 5px 0 white, -5px 0 white, 0 -5px white, 0 5px white, 10px 0 white, -10px 0 white, 0 -10px white, 0 10px white, 0 0 0 5px white, 15px 0 white, -15px 0 white, 0 15px white, 0 -15px white, 0 -5px 0 5px white, 0 5px 0 5px white, 5px 0 0 5px white, -5px 0 0 5px white, 20px 0 #A0A0A0, -20px 0 #A0A0A0, 0 -20px #A0A0A0, 0 20px #A0A0A0, 10px 0 0 5px #A0A0A0, -10px 0 0 5px #A0A0A0, 0 10px 0 5px #A0A0A0, 0 -10px 0 5px #A0A0A0, 0 0 0 10px #A0A0A0;
+  	margin: 20px auto;
+
 	height: 300px;
 	width: 300px;
 }
+
 
 .matchNum {
 	padding-top: 150px;
@@ -29,6 +33,7 @@ box-shadow: 0 0 200px rgba(0, 0, 0, 8) inset;
 #timer {
 	font-family: 'Press Start 2P', cursive;
 	font-size: 20pt;
+	padding-top: 30px;
 
 }
 
@@ -82,11 +87,13 @@ $div{
 	color: black;
 }
 #playerOneInput {
-	text-align: center;
+	font-family: 'Press Start 2P', cursive;
+	max-width: 30%;
 }
 
 #playerTwoInput {
-	text-align: center;
+	font-family: 'Press Start 2P', cursive;
+	max-width: 30%;	
 }
 
 #pOneDisplay {
@@ -101,9 +108,11 @@ $div{
 
 #score1{
 	font-family: 'Press Start 2P', cursive;
+	text-align: relative;
 }
 #score2{
 	font-family: 'Press Start 2P', cursive;
+	text-align: relative;
 }
 
 #pOneDiv {

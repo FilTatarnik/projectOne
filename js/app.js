@@ -17,7 +17,7 @@ OBJECTS IN GAME; GAME, PLAYER OBJECTS
 *********************************************************************************/
 const game = {
 	time: null,
-	score: null,
+	score: 0,
 	mainNum: [],  
 	playeroneNum: [], 
 	playertwoNum: [],
@@ -165,7 +165,7 @@ This function checks to see if the players numbers match the computers
 			return true;
 		} else {
 			return false;
-		}
+		  }
 		// if players's array of numbers contains main num
 			// return true/
 		// else 
@@ -247,15 +247,15 @@ class Player {
 /**************************************************************
 If the player has a matching number add one to score
 **************************************************************/
+		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
 	increaseScore(){
-		if(game.playeroneNum.indexOf(this.mainNum[0]) != -1){
-			score++;
+		if(game.playeroneNum.indexOf(game.mainNum[0]) != -1){
+			this.score++;
+			$('#score1').text('Score: ' + this.score);		
 		}
 		// if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
 		// 	score++;
-		}
-		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
-	
+	}
 
 	checkHand(){
 		/*playerNums === mainNum generated) score++*/
@@ -272,12 +272,14 @@ event listeners
 $(document).on('keypress', (e) => { 
 	if(e.key==="z") {
 	console.log(game.checkMatches(game.playeroneNum));
+	game.player.increaseScore();
 	// increaseScore()
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
 
 	} if(e.key==="/"){
 	console.log(game.checkMatchesTwo(game.playertwoNum));
+	game.player.increaseScore();
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
 	}
