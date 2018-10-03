@@ -69,6 +69,15 @@ This function makes the players and starts the game
 
 	},
 
+	win() {
+		// tell the user they won!
+		$("#gamewon").append('Winner!')
+
+		// stop the timer
+		clearInterval(this.interval);
+
+	},
+
 /**************************************************************
 This generates the main number 
 **************************************************************/
@@ -191,13 +200,17 @@ This function checks to see if the players numbers match the computers
 	//while loops
 	},
 
-	gameWon() {
-		// if(playerOne.score === 20 || playerTwo.score === 20){
-		// 	return true;
-		// }else {
-		// 			return false;
-		// }	
-	},
+	// gameWon() {
+	// 	if(game.score == 1){
+	// 		alert("You Win!")
+	// 	}
+	// },
+	// 	if(#scoreOne === 2){
+	// 		return true;
+	// 	}else {
+	// 				return false;
+	// 	}	
+	// },
 
 	checkScore(){
 
@@ -223,7 +236,6 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 			if(time % 3 === 0){
 				this.generateplayerNums()
 			}
-
 			$('#timer').text('Timer ' + time);
 
 		}, 1000)
@@ -255,7 +267,10 @@ If the player has a matching number add one to score
 		}else {
 			this.score--;
 			$('#score1').text('Score: ' + this.score);	
-		}
+		}if(this.score === 1){
+				game.win();
+			}
+
 	}
 
 	increaseScoreTwo(){
@@ -265,7 +280,9 @@ If the player has a matching number add one to score
 		}else {
 			this.score--;
 			$('#score2').text('Score: ' + this.score);	
-		}
+		}if(this.score === 1){
+				game.win();
+			}
 	}
 
 	checkHand(){
@@ -284,6 +301,7 @@ $(document).on('keypress', (e) => {
 	if(e.key==="z") {
 	console.log(game.checkMatches(game.playeroneNum));
 	game.player.increaseScoreOne();
+	// game.gameWon();
 	// increaseScore()
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
@@ -291,6 +309,7 @@ $(document).on('keypress', (e) => {
 	} if(e.key==="/"){
 	console.log(game.checkMatchesTwo(game.playertwoNum));
 	game.player.increaseScoreTwo();
+	// game.gameWon();
 	// if number in hand matches main num increaseScore()
 	//else decreaseScore()
 	}
@@ -300,6 +319,8 @@ $('#dealbutton').on('click', ()=>{
 	game.setNameandStartGame();
 
 });
+
+//for some reason if you click your addScore button more than once when you don't have a match, and once when you do have a match, it'll unload all of those saved clicks and increase your score by a ton.
 /**************************************************************
 This checks if the numbers in the player arrays mactch the number in the computer array
 **************************************************************/

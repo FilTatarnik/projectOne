@@ -123,3 +123,7 @@ $div{
 	padding-right: 200px;
 }
 
+#gamewon {
+	font-family: 'Press Start 2P', cursive;
+	font-size: relative ;
+}
