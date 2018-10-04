@@ -24,3 +24,19 @@ x First User to 10 points wins.
 
 
 ------>
+<!-------------------------------------
+
+(my old MVP) MVP
+1.Both players can input their name
+2.Main number is generated up top
+3.Both players have numbers generated in their playerNums 
+4.Add interval timers to all three generated numbers
+	-one for game which will generate every 3-4 seconds
+	-one for both players random numbers that will generate every 2 seconds?
+	(figure out interval times, these don't seem right or fun)
+5.Allow user 1 and user 2 to click their addScore button when a number in their array matches the main number generated
+6.Add 1 to playerXscore until either one gets to 10 or 20
+7.If playerXscore === 10 or 20, run gameWon function and stop interval timers and tell the player who won that they won
+8.Reset
+
+-->

@@ -1,23 +1,12 @@
+/*********************************************************************************
+INSTRUCTIONS DIV THAT SLIDES INTO FRAME WHENEVER USER RESFRESHES PAGE
+*********************************************************************************/
 $(function(){
     
     $(".mydiv").addClass("active");
     console.log($(".mydiv"));
     
 });	
-/*********************************************************************************
-MVP
-1.Both players can input their name
-2.Main number is generated up top
-3.Both players have numbers generated in their playerNums 
-4.Add interval timers to all three generated numbers
-	-one for game which will generate every 3-4 seconds
-	-one for both players random numbers that will generate every 2 seconds?
-	(figure out interval times, these don't seem right or fun)
-5.Allow user 1 and user 2 to click their addScore button when a number in their array matches the main number generated
-6.Add 1 to playerXscore until either one gets to 10 or 20
-7.If playerXscore === 10 or 20, run gameWon function and stop interval timers and tell the player who won that they won
-8.Reset
-*********************************************************************************/
 /*********************************************************************************
 OBJECTS IN GAME; GAME, PLAYER OBJECTS
 *********************************************************************************/
@@ -30,15 +19,10 @@ const game = {
 	interval: null,
 	player1: null,
 	player2: null,
-	/*so you're making a game object and the object is just like building a game. generalize
-	// how a game is made up. a timer, a scoreboard, the players playing. speaking of wouldn't you need to make the court, thats the exterior htmlcss i think. the functions you make simulate the actions/verbs that would happen on the court and as the game's playing ykno*/
-	
 /**************************************************************
 This function makes the players and starts the game
 **************************************************************/
 	setNameandStartGame(){
-
-
 		//get the name
 		const name = $('#playerOneInput').val()
 		//instantiate, pass in name, (get from input with jquery)
@@ -51,7 +35,6 @@ This function makes the players and starts the game
 		$('#playerOneNameBut').hide();
 
 		$('#pOneDisplay').append(name);
-
 
 
 		const nameTwo = $('#playerTwoInput').val()
@@ -67,11 +50,9 @@ This function makes the players and starts the game
 		$('#pTwoDisplay').append(nameTwo);
 
 
-
 		game.setTimer();
 		game.generatemainNum();
 		game.generateplayerNums();
-
 
 	},
 
@@ -182,50 +163,13 @@ This function checks to see if the players numbers match the computers
 		} else {
 			return false;
 		  }
-		// if players's array of numbers contains main num
-			// return true/
-		// else 
-			// return false
 	},
-
 	checkMatchesTwo(player) {
-
-		// if players's array of numbers contains main num
-			// return true/
-		// else 
-			// return false
-
-
 		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
 			return false;
 		  }
-	},
-
-	gameRounds(){/*we need to make a for loop here that goes 5 times that'll make */
-	//while loops
-	},
-
-	// gameWon() {
-	// 	if(game.score == 1){
-	// 		alert("You Win!")
-	// 	}
-	// },
-	// 	if(#scoreOne === 2){
-	// 		return true;
-	// 	}else {
-	// 				return false;
-	// 	}	
-	// },
-
-	checkScore(){
-
-
-	},
-
-	gameTimer() {
-				// this function will have somehting to do with the set interval and the timer that comes from the set interval will have something to do with how long the game will go for, meaning that this'll dictate how long the other functions are going to run, so either player has enough time to hit 10 points. 
 	},
 /*********************************************************************************
 TIMER INTERVALS -- this determines when the random numbers get regenerated
@@ -266,7 +210,6 @@ class Player {
 /**************************************************************
 If the player has a matching number add one to score
 **************************************************************/
-		//if number in hand matches main number generated, allow increase score button to be clicked and add one to score, if score === 20 , you win
 	increaseScoreOne(){
 		if(game.playeroneNum.indexOf(game.mainNum[0]) != -1){
 			this.score++;
@@ -292,12 +235,6 @@ If the player has a matching number add one to score
 				game.win();
 			}
 	}
-
-	checkHand(){
-		/*playerNums === mainNum generated) score++*/
-		//function that checks the players numbers to see if any of them match the main number generated
-	}
-
 }
 /**************************************************************
 END PLAYER OBJECT
@@ -309,30 +246,14 @@ $(document).on('keypress', (e) => {
 	if(e.key==="z") {
 	console.log(game.checkMatches(game.playeroneNum));
 	game.player.increaseScoreOne();
-	// game.gameWon();
-	// increaseScore()
-	// if number in hand matches main num increaseScore()
-	//else decreaseScore()
 
 	} if(e.key==="m"){
 	console.log(game.checkMatchesTwo(game.playertwoNum));
 	game.player.increaseScoreTwo();
-	// game.gameWon();
-	// if number in hand matches main num increaseScore()
-	//else decreaseScore()
 	}
 })
-//connect z and / to checkMatches function, and if checkmatches function = true add one to score.
+
 $('#dealbutton').on('click', ()=>{
 	game.setNameandStartGame();
 
 });
-
-//for some reason if you click your addScore button more than once when you don't have a match, and once when you do have a match, it'll unload all of those saved clicks and increase your score by a ton.
-/**************************************************************
-This checks if the numbers in the player arrays mactch the number in the computer array
-**************************************************************/
-// $('#checkarrays').on('click', ()=>{
-// 	console.log(game.checkMatches(game.playeroneNum));
-// 	console.log(game.checkMatchesTwo(game.playertwoNum));
-// });
