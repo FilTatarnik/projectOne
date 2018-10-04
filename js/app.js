@@ -12,7 +12,6 @@ OBJECTS IN GAME; GAME, PLAYER OBJECTS
 *********************************************************************************/
 const game = {
 	time: null,
-	score: 0,
 	mainNum: [],  
 	playeroneNum: [], 
 	playertwoNum: [],
@@ -28,7 +27,7 @@ This function makes the players and starts the game
 		//instantiate, pass in name, (get from input with jquery)
 		const playerOne = new Player(name);
 
-		this.player = playerOne;
+		this.player1 = playerOne;
 
 		$('#playerOneInput').hide();
 
@@ -41,7 +40,7 @@ This function makes the players and starts the game
 		//instantiate, pass in name, (get from input with jquery)
 		const playerTwo = new Player(nameTwo);
 
-		this.player = playerTwo;
+		this.player2 = playerTwo;
 
 		$('#playerTwoInput').hide();
 
@@ -142,15 +141,15 @@ This generates the player numbers that are trying to match the number above ^
 			//storing the number in a variable to use later
 			this.playertwoNum.push(num);
 		
-		/// ------------ UPDATE THE SCREEN to reflect changes in data ---------------- ///
-		//create a div
-		const $div = $('<div></div>');
+			/// ------------ UPDATE THE SCREEN to reflect changes in data ---------------- ///
+			//create a div
+			const $div = $('<div></div>');
 
-		//put the number we stored in the variable in the div we just declared
-		$div.text(num);
+			//put the number we stored in the variable in the div we just declared
+			$div.text(num);
 
-		//append*write* the dive to pTwo container
-		$('#playerDiv2').append($div);				
+			//append*write* the dive to pTwo container
+			$('#playerDiv2').append($div);				
 		}
 
 	},
@@ -162,14 +161,14 @@ This function checks to see if the players numbers match the computers
 			return true;
 		} else {
 			return false;
-		  }
+		}
 	},
 	checkMatchesTwo(player) {
 		if(this.playertwoNum.indexOf(this.mainNum[0]) !== -1){
 			return true;
 		} else {
 			return false;
-		  }
+		}
 	},
 /*********************************************************************************
 TIMER INTERVALS -- this determines when the random numbers get regenerated
@@ -218,9 +217,8 @@ If the player has a matching number add one to score
 			this.score--;
 			$('#score1').text('Score: ' + this.score);	
 		}if(this.score === 10){
-
-				game.win();
-			}
+			game.win();
+		}
 
 	}
 
@@ -232,8 +230,8 @@ If the player has a matching number add one to score
 			this.score--;
 			$('#score2').text('Score: ' + this.score);	
 		}if(this.score === 10){
-				game.win();
-			}
+			game.win();
+		}
 	}
 }
 /**************************************************************
@@ -244,12 +242,15 @@ event listeners
 *********************************************************************************/
 $(document).on('keypress', (e) => { 
 	if(e.key==="z") {
-	console.log(game.checkMatches(game.playeroneNum));
-	game.player.increaseScoreOne();
+		console.log(game.checkMatches(game.playeroneNum));
+		game.player1.increaseScoreOne();
 
-	} if(e.key==="m"){
-	console.log(game.checkMatchesTwo(game.playertwoNum));
-	game.player.increaseScoreTwo();
+	} 
+
+	if(e.key==="m"){
+		console.log(game.checkMatchesTwo(game.playertwoNum));
+		game.player2.increaseScoreTwo();
+	
 	}
 })
 
@@ -257,3 +258,5 @@ $('#dealbutton').on('click', ()=>{
 	game.setNameandStartGame();
 
 });
+
+// if a player clicks their score button more than once before the other person clicks theirs, then the clicks player1 did(lets say 3) will unload onto the player2 when he clicks his. so if player1 clicks his button 3 times then player 2 hits his his score will go up or down 3 points
