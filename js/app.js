@@ -275,6 +275,7 @@ If the player has a matching number add one to score
 			this.score--;
 			$('#score1').text('Score: ' + this.score);	
 		}if(this.score === 10){
+
 				game.win();
 			}
 
