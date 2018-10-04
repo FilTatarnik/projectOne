@@ -1,5 +1,7 @@
 ------------------------------------
-	USER STORIES
+# USER STORIES
+
+```
 x User reloads page
 x User sees the instructions fly into screen from the left
 x User should be able to read instructions and know how the game plays and how to add to their score
@@ -10,13 +12,15 @@ x User needs to constantly check their hand and the Dealers hand to see if any o
 x If user see's a match, user should be able to click, "z" for Player 1 to increase their score by one, and "m" for Player 2 to increase their score by one.
 x If user hits the score button when there is not a match, their score goes down one.
 x First User to 10 points wins.
-
+```
 -
 
 
 -------------------------------------
-	WIRE FRAME
+# WIRE FRAME
 
+
+```
 +------------------------------------------------------------------------------------------+
 |-------------+      +---------------------------------------------------------+           |
 ||  Start     |      |                    INSTRUCTIONS                         |           |
@@ -55,13 +59,14 @@ x First User to 10 points wins.
 |       +---------+                         |                 +-----------+                |
 |                                           |                                              |
 +-------------------------------------------+----------------------------------------------+
-
+```
 
 
 ------
 -----------------------------------
 
-(my old MVP) MVP
+# (my old MVP) MVP
+```
 1.Both players can input their name
 2.Main number is generated up top
 3.Both players have numbers generated in their playerNums 
@@ -73,4 +78,4 @@ x First User to 10 points wins.
 6.Add 1 to playerXscore until either one gets to 10 or 20
 7.If playerXscore === 10 or 20, run gameWon function and stop interval timers and tell the player who won that they won
 8.Reset
-
+```
