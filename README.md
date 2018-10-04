@@ -1,4 +1,4 @@
-<!--------------------------------------
+------------------------------------
 	USER STORIES
 x User reloads page
 x User sees the instructions fly into screen from the left
@@ -11,7 +11,7 @@ x If user see's a match, user should be able to click, "z" for Player 1 to incre
 x If user hits the score button when there is not a match, their score goes down one.
 x First User to 10 points wins.
 
---->
+-
 
 
 -------------------------------------
@@ -19,7 +19,7 @@ x First User to 10 points wins.
 
 +------------------------------------------------------------------------------------------+
 |-------------+      +---------------------------------------------------------+           |
-||  Start     | +--> |                    INSTRUCTIONS                         |           |
+||  Start     |      |                    INSTRUCTIONS                         |           |
 ||            |      +---------------------------------------------------------+           |
 +-------------+               +---------------------------+                                |
 |                             |                           |                                |
@@ -58,8 +58,8 @@ x First User to 10 points wins.
 
 
 
------->
-<!-------------------------------------
+------
+-----------------------------------
 
 (my old MVP) MVP
 1.Both players can input their name
@@ -74,4 +74,3 @@ x First User to 10 points wins.
 7.If playerXscore === 10 or 20, run gameWon function and stop interval timers and tell the player who won that they won
 8.Reset
 
--->
