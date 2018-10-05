@@ -179,7 +179,7 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 			time++;
 
 			// updating computer number
-			if(time % 3 === 0){
+			if(time % 2 === 0){
 				 this.generatemainNum()
 			}
 			// update player numbers
@@ -188,7 +188,7 @@ TIMER INTERVALS -- this determines when the random numbers get regenerated
 			}
 			$('#timer').text('Timer ' + time);
 
-		}, 1000)
+		}, 850)
 
 	},
 

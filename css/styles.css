@@ -1,7 +1,9 @@
 body{
 /*	background-color: #477148;*/
-	border: 20px round gray;
+	/*border: 20px round gray;*/
 	box-shadow: 0 0 300px rgba(10, 10, 10, 8) inset;
+	margin: 0;
+
 }
 
 #maingame {
